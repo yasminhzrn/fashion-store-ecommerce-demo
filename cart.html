@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | Mina's Ecommerce</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <section id="header">
+        <a href="index.html">
+            <img src="img/logo.jpg" class="logo" alt="Mina's Ecommerce logo">
+        </a>
+
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <a class="active" href="cart.html">
+                        <i class="fa fa-shopping-cart"
+                           aria-hidden="true"
+                           style="font-size:20px"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <main class="section-p1">
+        <h2>Your Shopping Cart</h2>
+        <p>This is a demo store. No real payment will be processed.</p>
+
+        <div id="cart-items"></div>
+
+        <div id="cart-summary">
+            <h3>
+                Total:
+                <span id="cart-total">$0.00</span>
+            </h3>
+
+            <button id="clear-cart" class="normal">
+                Clear Cart
+            </button>
+
+            <button id="checkout-button" class="normal">
+                Demo Checkout
+            </button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

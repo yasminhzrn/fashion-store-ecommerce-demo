@@ -110,4 +110,140 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     updateCartIcon();
+
+    const cartItemsContainer = document.querySelector("#cart-items");
+    const cartTotalElement = document.querySelector("#cart-total");
+    const clearCartButton = document.querySelector("#clear-cart");
+    const checkoutButton = document.querySelector("#checkout-button");
+
+    function renderCartPage() {
+        if (!cartItemsContainer || !cartTotalElement) {
+            return;
+        }
+
+        cartItemsContainer.innerHTML = "";
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = `
+                <p>Your cart is currently empty.</p>
+                <a href="index.html">Continue shopping</a>
+            `;
+
+            cartTotalElement.textContent = "$0.00";
+            return;
+        }
+
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            total += item.price * item.quantity;
+
+            const cartItem = document.createElement("div");
+            cartItem.classList.add("cart-item");
+
+            cartItem.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+
+                <div class="cart-item-details">
+                    <h3>${item.name}</h3>
+                    <p>${item.category}</p>
+                    <p>$${item.price.toFixed(2)}</p>
+
+                    <div class="cart-quantity">
+                        <button
+                            class="decrease-quantity"
+                            data-index="${index}"
+                            type="button"
+                        >
+                            -
+                        </button>
+
+                        <span>${item.quantity}</span>
+
+                        <button
+                            class="increase-quantity"
+                            data-index="${index}"
+                            type="button"
+                        >
+                            +
+                        </button>
+                    </div>
+
+                    <button
+                        class="remove-item"
+                        data-index="${index}"
+                        type="button"
+                    >
+                        Remove
+                    </button>
+                </div>
+            `;
+
+            cartItemsContainer.appendChild(cartItem);
+        });
+
+        cartTotalElement.textContent = `$${total.toFixed(2)}`;
+
+        document.querySelectorAll(".increase-quantity").forEach((button) => {
+            button.addEventListener("click", () => {
+                const index = Number(button.dataset.index);
+
+                cart[index].quantity += 1;
+                saveCart();
+                renderCartPage();
+            });
+        });
+
+        document.querySelectorAll(".decrease-quantity").forEach((button) => {
+            button.addEventListener("click", () => {
+                const index = Number(button.dataset.index);
+
+                cart[index].quantity -= 1;
+
+                if (cart[index].quantity <= 0) {
+                    cart.splice(index, 1);
+                }
+
+                saveCart();
+                renderCartPage();
+            });
+        });
+
+        document.querySelectorAll(".remove-item").forEach((button) => {
+            button.addEventListener("click", () => {
+                const index = Number(button.dataset.index);
+
+                cart.splice(index, 1);
+                saveCart();
+                renderCartPage();
+            });
+        });
+    }
+
+    if (clearCartButton) {
+        clearCartButton.addEventListener("click", () => {
+            cart = [];
+            saveCart();
+            renderCartPage();
+        });
+    }
+
+    if (checkoutButton) {
+        checkoutButton.addEventListener("click", () => {
+            if (cart.length === 0) {
+                alert("Your cart is empty.");
+                return;
+            }
+
+            alert(
+                "Demo checkout completed. No payment was processed."
+            );
+
+            cart = [];
+            saveCart();
+            renderCartPage();
+        });
+    }
+
+    renderCartPage();
 });
