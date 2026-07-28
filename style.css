@@ -1,0 +1,501 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive; 
+}
+
+.logo {
+    width: 60px;
+    height: auto;
+    margin: 10px;
+}
+
+#header {
+    display: flex;  /*turn the whole header into container. so ada anak(logo n navbar), they are put next to each other*/
+    align-items: center; /*each align ke tengah*/
+    justify-content: space-between; /*pushes items as far apart as possible*/
+    line-height: 10px;
+    background-color:rgb(248, 238, 228);
+    padding:3px 10px;
+    box-shadow: 0 5px 15px rgb(0,0,0,0.1); /*horizontol, goes down, blur, color*/
+    z-index: 999;
+    position:sticky; /*sticky navbar so it does not move!!*/
+    top:0;
+    left:0;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+#navbar li{
+    list-style: none; /*buang bulletpoint */
+    padding:0 20px;
+    position: relative;
+}
+
+#navbar li a{ /*ni nak edit the text*/
+    text-decoration: none; /*buang underline*/
+    font-size: 8px;
+    font-weight:600;
+    color: rgb(226, 99, 107);
+}
+
+#navbar li a:hover, /*hover is a pseudo-class: style when mouse is on it*/
+#navbar li a.active{ /*warna dia tukar tukar bila kena mouse. yg active tu is a classname its like showing which page am i on now, pastu initialise in html*/
+    color:rgb(165, 209, 245);
+}
+
+/*nak buat underline effect under navbar. use SUDO classes meaning ada before and after*/
+#navbar li a.active::after, /*::after means: create fake element after the link. it does not exist in HTML but css creates it*/
+#navbar li a:hover::after{ /*if kita inspect, nanti boleh nampak ada after tu*/
+    content: ""; /*ni la yg suruh create fake element*/
+    width: 30%;
+    height: 2px;
+    background: rgb(165, 209, 245);
+    position: absolute; /*ni position anak, so kena letak relative in parents*/
+    bottom: -4px; /*4px below text*/
+    left: 20px; /*slighly from the left*/
+}
+
+h1 {
+    font-size: 35px;
+    line-height: 40px;
+    color: rgb(226, 99, 107);
+}
+
+h2 {
+    font-size: 25px;
+    line-height:35px;
+    color: black;
+}
+
+h4 {
+    font-size: 12px;
+    line-height: 20px;
+    color: black;
+    padding-bottom: 12px;
+}
+
+h3 {
+    font-size: 10px;
+    line-height: 20px;
+    color: black;
+    padding-bottom: 5px;
+}
+
+h5 {
+    font-size: 8px;
+    color: rgb(143, 23, 99);
+    line-height: 15px;
+}
+
+h6 {
+    font-size: 5px;
+    color: rgb(143, 23, 99);
+}
+
+p {
+    font-size: 10px;
+    line-height: 20px;
+    color: black;
+    padding-bottom: 12px;
+
+}
+
+#hero{
+    background-image: url("img/herobg.png");
+    width: 100%;
+    height: 90vh; /*viewport height so if 50: 50% of screen height*/
+    background-size: cover; /*scale the image so it fully covers the section*/
+    background-position: top 0 right 20;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content:center;
+}
+
+#hero button{
+    background-image: url("img/button.png");
+    background-color: transparent;
+    color:brown;
+    border:0;
+    padding: 14px 80px 14px 65px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    font-weight: 400;
+    font-size:12px;
+}
+
+#feature{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#feature .febox{
+    width: 180px;
+    height: 180px;
+    text-align: center;
+    padding: 15px 15px;
+    box-shadow: 7px 7px 20px rgb(148, 29, 114);
+    border: 0.5px solid rgb(126, 188, 236);
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+#feature .febox img{
+    width: 90%;
+    height: 90%;
+    padding-bottom: 10px;
+}
+
+#feature .febox:hover{
+    box-shadow: 3px 3px 40px rgb(215, 43, 167);
+}
+
+#hotsell {
+    text-align: center;
+}
+
+#hotsell .pro-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#hotsell .pro{
+    width: 280px;
+    height: 350px;
+    text-align: center;
+    padding: 15px 15px;
+    border: 0.5px solid rgb(126, 188, 236);
+    border-radius: 4px;
+    margin: 15px 0;
+    background-color:rgb(247, 247, 218);
+    cursor: pointer;
+    margin: 15px 0;
+    transition: 0.2s ease;
+}
+
+#hotsell .pro img{
+    width: 100%;
+    height: 75%;
+    padding-bottom: 10px;
+}
+
+#hotsell .pro:hover{
+    box-shadow: 3px 3px 40px rgb(215, 43, 167);
+}
+
+#hotsell .pro .des{
+    text-align: start;
+    padding: 10px 0;
+}
+
+#hotsell .pro .des span{
+    color:brown;
+    font-size: 8px
+}
+
+#hotsell .pro .des h3{
+    line-height: 15px;
+    padding: 10px 0;
+    font-size: 11px
+}
+
+#hotsell .pro .des h4{
+    line-height: 15px;
+    padding: 10px 0;
+    font-size: 17px
+}
+
+#hotsell .pro .des i{
+    color:rgb(238, 84, 210);
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+#hotsell .harga{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#hotsell .info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+}
+
+#hotsell .cart{
+    background-color:rgb(235, 156, 191);
+    border-radius: 50px;
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+#banner {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    background-image: url("img/banner.jpg");
+    height: 40vh;
+    width: 100%;
+}
+
+#banner h4{
+    color: rgb(138, 19, 83);
+    font-size: 12px;
+}
+
+#banner h2 span{
+    color: rgb(42, 56, 165)
+}
+
+#banner h2{
+    padding: 10px;
+    font-size: 20px;
+}
+
+#banner button:hover{
+    background:rgb(192, 197, 232);
+    color:rgb(227, 134, 185);
+}
+
+#new {
+    text-align: center;
+    background-color: rgb(252, 210, 217);
+}
+
+#new .pro-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#new .pro{
+    width: 280px;
+    height: 350px;
+    text-align: center;
+    padding: 15px 15px;
+    border: 0.5px solid rgb(126, 188, 236);
+    border-radius: 4px;
+    margin: 15px 0;
+    background-color:rgb(247, 247, 218);
+    cursor: pointer;
+    margin: 15px 0;
+    transition: 0.2s ease;
+}
+
+#new .pro img{
+    width: 100%;
+    height: 75%;
+    padding-bottom: 10px;
+}
+
+#new .pro:hover{
+    box-shadow: 3px 3px 40px rgb(215, 43, 167);
+}
+
+#new .pro .des{
+    text-align: start;
+    padding: 10px 0;
+}
+
+#new .pro .des span{
+    color:brown;
+    font-size: 8px
+}
+
+#new .pro .des h3{
+    line-height: 15px;
+    padding: 10px 0;
+    font-size: 11px
+}
+
+#new .pro .des h4{
+    line-height: 15px;
+    padding: 10px 0;
+    font-size: 17px
+}
+
+#new .pro .des i{
+    color:rgb(238, 84, 210);
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+#new .harga{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#new .info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+}
+
+#new .cart{
+    background-color:rgb(235, 156, 191);
+    border-radius: 50px;
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+#sm-banner{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;               /* nicer spacing */
+}
+
+#sm-banner .banner-box{
+  flex: 1 1 48%;           /* key line: allow 2 per row */
+  height: 30vh;
+  background-size: cover; /*ambik whole picture*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("img/smbanner1.jpg");
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px;
+}
+
+#sm-banner .banner-box2{
+  background-image: url("img/smbanner2.jpg");
+}
+
+#sm-banner h4{
+    color: white;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+#sm-banner h2{
+    color: white;
+    font-size: 25px;
+    font-weight: 300;
+}
+
+#sm-banner span{
+    color: rgb(255, 255, 255);
+    font-size: 10px;
+    font-weight: 300;
+    padding-bottom: 15px;
+}
+
+#sm-banner .banner-box:hover button{
+    background-color:rgb(255, 196, 239);
+    border:1px solid;
+}
+
+#banner3 .kecil{
+    display: flex;
+    justify-content: space-between;
+}
+
+#banner3 h2{
+    color: white;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+#banner3 h3{
+    color: rgb(0, 0, 0);
+    font-size: 9px;
+    font-weight: 300;
+}
+
+#banner3 .gmbr1{
+    background-image: url("img/banner3winter.jpg");
+    background-size: cover; /*ambik whole picture*/
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: 30px;
+}
+
+#banner3 .gmbr2{
+    background-image: url("img/banner3skirt.jpg");
+    background-size: cover; /*ambik whole picture*/
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 30px;
+}
+
+#banner3 .gmbr3{
+    background-image: url("img/banner3blouse.jpg");
+    background-size: cover; /*ambik whole picture*/
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding: 30px;
+}
+
+.section-p1 {
+    padding: 40px 80px;
+}
+
+.section-p2 {
+    padding: 10px 80px;
+}
+
+.section-m1 {
+    padding: 40px 0;
+}
+
+button.normal{
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 30px;
+    color:rgb(227, 83, 107);
+    background-color:antiquewhite;
+    border-radius:4px;
+    cursor: pointer;
+    border:3px solid rgb(161, 178, 206);
+    outline:none;
+    transition:0.2s;
+}
+
+button.white{
+    font-size: 10px;
+    font-weight: 600;
+    padding: 11px 18px;
+    color:rgb(255, 255, 255);
+    background-color: transparent;
+    cursor: pointer;
+    border:1px solid rgb(255, 255, 255);
+    outline:none;
+    transition:0.2s;
+}
+
+body {
+    width: 100%;
+    background-color:rgb(215, 231, 243);
+}
