@@ -1,8 +1,0 @@
-    flex: 1 1 48%;           /* key line: allow 2 per row */
-    height: 30vh;
-
-
-
-    flex-direction: column;
-
-    align-items: flex-start;
