@@ -1,435 +1,321 @@
 <!DOCTYPE html>
-<!-- Tells the browser this is an HTML5 document -->
-
 <html lang="en">
-<!-- Starts the HTML document, language is English -->
-
 <head>
-    <!-- contains settings and information about the page -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | Mina's Ecommerce</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <meta charset="UTF-8">
-    <!-- Allows all characters and symbols to display correctly -->
+  <style>
+    #shop-hero {
+      min-height: 38vh;
+      padding: 60px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(252,210,217,.86), rgba(215,231,243,.9)), url("img/banner.jpg") center/cover;
+    }
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tells older browsers to use the latest rendering mode -->
+    #shop-hero div { max-width: 720px; }
+    #shop-hero h1 { margin-bottom: 12px; }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Makes the page responsive on phones and tablets -->
+    .shop-controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      padding: 20px;
+      margin-bottom: 30px;
+      background: rgb(248,238,228);
+      border: 1px solid rgb(226,99,107);
+      border-radius: 8px;
+    }
 
-    <title>Mina's Ecommerce </title>
-    <!-- Text shown on the browser tab -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Links the external CSS file for styling -->
+    #product-search {
+      flex: 1 1 280px;
+      padding: 13px;
+      border: 1px solid rgb(165,209,245);
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: 9px;
+    }
+
+    .filter-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .filter-button {
+      padding: 10px 14px;
+      border: 1px solid rgb(226,99,107);
+      border-radius: 20px;
+      background: white;
+      color: rgb(143,23,99);
+      font-family: inherit;
+      font-size: 8px;
+      cursor: pointer;
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+      background: rgb(226,99,107);
+      color: white;
+    }
+
+    #shop-products { text-align: center; }
+
+    #shop-products .pro-container {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 25px;
+    }
+
+    #shop-products .pro {
+      width: 100%;
+      height: 380px;
+      padding: 15px;
+      text-align: left;
+      border: 1px solid rgb(126,188,236);
+      border-radius: 8px;
+      background: rgb(247,247,218);
+      transition: .2s ease;
+    }
+
+    #shop-products .pro:hover {
+      transform: translateY(-4px);
+      box-shadow: 3px 3px 30px rgba(215,43,167,.35);
+    }
+
+    #shop-products .pro > img {
+      width: 100%;
+      height: 245px;
+      object-fit: contain;
+      padding-bottom: 10px;
+    }
+
+    #shop-products .des span { color: brown; font-size: 8px; }
+
+    #shop-products .harga,
+    #shop-products .info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    #shop-products .harga h3 { padding: 8px 0; }
+    #shop-products .harga h4 { padding: 8px 0; color: rgb(143,23,99); }
+    #shop-products .star { color: rgb(238,84,210); }
+
+    #shop-products .cart {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 32px;
+      border: 1px solid brown;
+      border-radius: 30px;
+      background: rgb(235,156,191);
+    }
+
+    #no-products { display: none; margin-top: 30px; }
+
+    @media (max-width: 1000px) {
+      #shop-products .pro-container { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 760px) {
+      #shop-hero { padding: 50px 25px; }
+      #shop-products .pro-container { grid-template-columns: repeat(2, 1fr); }
+      .section-p1 { padding-left: 25px; padding-right: 25px; }
+    }
+
+    @media (max-width: 520px) {
+      #shop-products .pro-container { grid-template-columns: 1fr; }
+      #navbar li { padding: 0 7px; }
+    }
+  </style>
 </head>
-
 <body>
 
-    <section id="header">
-        <a href="#"><img src="img/logo.jpg" class="logo" alt=""></a>
+  <section id="header">
+    <a href="index.html"><img src="img/logo.jpg" class="logo" alt="Mina's Ecommerce logo"></a>
+    <div>
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html" aria-label="Shopping cart"><i class="fa fa-shopping-cart" style="font-size:20px"></i></a></li>
+      </ul>
+    </div>
+  </section>
 
-        <div>
-            <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a class="active" href="shop.html">Shop</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:20px"></i></a></li>
-            </ul>
-        </div>
+  <main>
+    <section id="shop-hero">
+      <div>
+        <h4>MINA'S COLLECTION</h4>
+        <h1>Find Your New Favourite</h1>
+        <p>Browse dresses, skirts, shoes and accessories for your soft and playful wardrobe.</p>
+      </div>
     </section>
 
-    <section id="hero">
-    <h4>Super value deals</h4>
-    <h2>Buy 1 FREE 1</h2>
-    <h1>On all products</h1>
-    <p>Save more with coupons and social media SHOUTOUT</p>
-    <button>SHOP NOW</button>
+    <section id="shop-products" class="section-p1">
+      <div class="shop-controls">
+        <input id="product-search" type="search" placeholder="Search products..." aria-label="Search products">
+
+        <div class="filter-buttons">
+          <button class="filter-button active" data-filter="all" type="button">All</button>
+          <button class="filter-button" data-filter="dress" type="button">Dresses</button>
+          <button class="filter-button" data-filter="skirt" type="button">Skirts</button>
+          <button class="filter-button" data-filter="shoes" type="button">Shoes</button>
+          <button class="filter-button" data-filter="accessory" type="button">Accessories</button>
+        </div>
+      </div>
+
+      <h2>Shop All Products</h2>
+      <p>Use the search box or category buttons to find a product.</p>
+
+      <div class="pro-container">
+        <div class="pro" data-category="dress" data-name="Jasmine Dress">
+          <img src="img/product/dressbunga.png" alt="Jasmine dress">
+          <div class="des">
+            <span>Dress</span>
+            <div class="harga"><h3>Jasmine Dress</h3><h4>$78</h4></div>
+            <div class="info">
+              <div class="star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+              <a href="cart.html" aria-label="Add Jasmine Dress to cart"><i class="fa fa-shopping-cart cart"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pro" data-category="shoes" data-name="Pearl Bow Heels">
+          <img src="img/product/heels.png" alt="Pearl bow heels">
+          <div class="des">
+            <span>Shoes</span>
+            <div class="harga"><h3>Pearl Bow Heels</h3><h4>$64</h4></div>
+            <div class="info">
+              <div class="star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+              <a href="cart.html" aria-label="Add Pearl Bow Heels to cart"><i class="fa fa-shopping-cart cart"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pro" data-category="skirt" data-name="Peach Ribbon Skirt">
+          <img src="img/product/skirtpeach.png" alt="Peach ribbon skirt">
+          <div class="des">
+            <span>Skirt</span>
+            <div class="harga"><h3>Peach Ribbon Skirt</h3><h4>$46</h4></div>
+            <div class="info">
+              <div class="star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+              <a href="cart.html" aria-label="Add Peach Ribbon Skirt to cart"><i class="fa fa-shopping-cart cart"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pro" data-category="dress" data-name="Rose Garden Mini Dress">
+          <img src="img/product/p3.png" alt="Rose garden mini dress">
+          <div class="des">
+            <span>Dress</span>
+            <div class="harga"><h3>Rose Garden Mini Dress</h3><h4>$72</h4></div>
+            <div class="info">
+              <div class="star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+              <a href="cart.html" aria-label="Add Rose Garden Mini Dress to cart"><i class="fa fa-shopping-cart cart"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pro" data-category="accessory" data-name="Velvet Ribbon Handbag">
+          <img src="img/product/p4.png" alt="Velvet ribbon handbag">
+          <div class="des">
+            <span>Accessory</span>
+            <div class="harga"><h3>Velvet Ribbon Handbag</h3><h4>$52</h4></div>
+            <div class="info">
+              <div class="star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+              <a href="cart.html" aria-label="Add Velvet Ribbon Handbag to cart"><i class="fa fa-shopping-cart cart"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pro" data-category="dress" data-name="Bluebell Midi Dress">
+          <img src="img/product/p5.png" alt="Bluebell midi dress">
+          <div class="des">
+            <span>Dress</span>
+            <div class="harga"><h3>Bluebell Midi Dress</h3><h4>$81</h4></div>
+            <div class="info">
+              <div class="star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+              <a href="cart.html" aria-label="Add Bluebell Midi Dress to cart"><i class="fa fa-shopping-cart cart"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pro" data-category="skirt" data-name="Ivory Lace Maxi Skirt">
+          <img src="img/product/p6.png" alt="Ivory lace maxi skirt">
+          <div class="des">
+            <span>Skirt</span>
+            <div class="harga"><h3>Ivory Lace Maxi Skirt</h3><h4>$49</h4></div>
+            <div class="info">
+              <div class="star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+              <a href="cart.html" aria-label="Add Ivory Lace Maxi Skirt to cart"><i class="fa fa-shopping-cart cart"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pro" data-category="accessory" data-name="Sweetheart Pearl Necklace">
+          <img src="img/product/p7.png" alt="Sweetheart pearl necklace">
+          <div class="des">
+            <span>Accessory</span>
+            <div class="harga"><h3>Sweetheart Pearl Necklace</h3><h4>$28</h4></div>
+            <div class="info">
+              <div class="star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+              <a href="cart.html" aria-label="Add Sweetheart Pearl Necklace to cart"><i class="fa fa-shopping-cart cart"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="no-products">
+        <h3>No products found</h3>
+        <p>Try another search or category.</p>
+      </div>
     </section>
+  </main>
 
-    <section id="feature" class="section-p1">
-        <div class="febox">
-            <img src="img/freeship.png" alt="">
-            <h5>Free Shipping</h5>
-        </div>
-        <div class="febox">
-            <img src="img/online.png" alt="">
-            <h5>Online Shopping</h5>
-        </div>
-        <div class="febox">
-            <img src="img/chatbots.png" alt="">
-            <h5>Trade-In</h5>
-        </div>
-        <div class="febox">
-            <img src="img/bots.png" alt="">
-            <h5>24/7 ChatBots</h5>
-        </div>
-        <div class="febox">
-            <img src="img/discounts.png" alt="">
-            <h5>Engaging Discount</h5>
-        </div>
-    </section>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchInput = document.querySelector("#product-search");
+      const buttons = document.querySelectorAll(".filter-button");
+      const products = document.querySelectorAll("#shop-products .pro");
+      const noProducts = document.querySelector("#no-products");
+      let category = "all";
 
-    <section id="hotsell" class="section-p1">
-        <h2>Our Hot-Selling</h2>
-        <h4>Viral Coquette Collection!</h4>
-        <div class="pro-container">
-            <div class="pro">
-                <img src="img/product/dressbunga.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/heels.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/skirtpeach.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/p3.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/p4.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/p5.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/p6.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/p7.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/p8.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      function filterProducts() {
+        const search = searchInput.value.toLowerCase().trim();
+        let visible = 0;
 
-    <section id="banner" class="section-m1">
-        <h4>MIx & MAtch!</h4>
-        <h2>Up to <span>70% Off</span> - All Outfits and Accessories!</h2>
-        <button class="normal">Explore more</button>
+        products.forEach(product => {
+          const matchesName = product.dataset.name.toLowerCase().includes(search);
+          const matchesCategory = category === "all" || product.dataset.category === category;
+          const show = matchesName && matchesCategory;
+          product.style.display = show ? "block" : "none";
+          if (show) visible++;
+        });
 
-    </section>
+        noProducts.style.display = visible === 0 ? "block" : "none";
+      }
 
-    <section id="new" class="section-p1">
-        <h2>New Arrivals</h2>
-        <h4>Summer Collection New Winsome Design</h4>
-        <div class="pro-container">
-            <div class="pro">
-                <img src="img/product/dressbunga.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/heels.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/skirtpeach.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/p3.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/p4.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/p5.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pro">
-                <img src="img/product/p6.png" alt="">
-                <div class="des">
-                    <span>Dress</span>
-                    <div class="harga">
-                        <h3>Jasmine Dress</h3>
-                        <h4>$78</h4>
-                    </div>
-                    <div class="info">
-                        <div class="star">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <a href="cart.html"><i class="fa fa-shopping-cart cart" aria-hidden="true" style="font-size:25px; color:brown"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      searchInput.addEventListener("input", filterProducts);
 
-    <section id="sm-banner" class="section-p2">
-        <div class="banner-box">
-            <h4>crazy deals</h4>
-            <h2>buy 1 get 1 free</h2>
-            <span>The best coquette dress is on sale at CARA</span>
-            <button class="white">Learn More</button>
-        </div>
-        <div class="banner-box banner-box2">
-            <h4>Spring/Summer</h4>
-            <h2>Upcoming Season</h2>
-            <span>Viral Collection calling just around you!!</span>
-            <button class="white">Learn More</button>
-        </div>
-    </section>
-
-    <section id="banner3" class="section-p2">
-        <div class="kecil">
-            <div class="gmbr1">
-                <h2>Seasonal Sale</h2>
-                <h3>Winter Collection Clearance Price</h3>
-            </div>
-            <div class="gmbr2">
-                <h2>New Skirts Collection</h2>
-                <h3>Maxi/Midi/Mini</h3>
-            </div>
-            <div class="gmbr3">
-                <h2>Blouses</h2>
-                <h3>Various Styling and Pattern</h3>
-            </div>
-        </div>
-        
-    </section>
-
-    <script src="script.js"></script>
-    <!-- Links the external JavaScript file -->
+      buttons.forEach(button => {
+        button.addEventListener("click", () => {
+          buttons.forEach(item => item.classList.remove("active"));
+          button.classList.add("active");
+          category = button.dataset.filter;
+          filterProducts();
+        });
+      });
+    });
+  </script>
 </body>
-
 </html>
